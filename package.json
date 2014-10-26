@@ -1,0 +1,17 @@
+{
+  "name": "crelns",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "browserify test/index.js > test/index.browser.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "crel": "^2.1.5"
+  },
+  "devDependencies": {
+    "grape": "^1.0.3"
+  }
+}
