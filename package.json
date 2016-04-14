@@ -1,6 +1,6 @@
 {
   "name": "crelns",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "[Crel](http://github.com:KoryNunn/crel) for creating namespaced elements, like SVG.",
   "main": "index.js",
   "scripts": {
