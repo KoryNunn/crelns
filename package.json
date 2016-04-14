@@ -1,7 +1,7 @@
 {
   "name": "crelns",
   "version": "1.0.0",
-  "description": "",
+  "description": "[Crel](http://github.com:KoryNunn/crel) for creating namespaced elements, like SVG.",
   "main": "index.js",
   "scripts": {
     "build": "browserify test/index.js > test/index.browser.js"
@@ -13,5 +13,17 @@
   },
   "devDependencies": {
     "grape": "^1.0.3"
-  }
+  },
+  "directories": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KoryNunn/crelns.git"
+  },
+  "keywords": [],
+  "bugs": {
+    "url": "https://github.com/KoryNunn/crelns/issues"
+  },
+  "homepage": "https://github.com/KoryNunn/crelns#readme"
 }
