@@ -1,6 +1,6 @@
 # crelns
 
-[Crel](http://github.com:KoryNunn/crel) for creating namespaced elements, like SVG.
+[crel](http://github.com/KoryNunn/crel) for creating namespaced elements, like SVG.
 
 # usage:
 
