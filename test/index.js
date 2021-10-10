@@ -1,5 +1,10 @@
-var test = require('grape'),
-    crelns = require('../');
+var test = require('tape');
+var crelns = require('../');
+var { JSDOM } = require('jsdom');
+var dom = new JSDOM();
+
+global.window = dom.window;
+global.document = dom.window.document;
 
 test('create g', function(t) {
     t.plan(1);
@@ -10,8 +15,6 @@ test('create g', function(t) {
         testElement.tagName,
         'g'
     );
-
-    t.end();
 });
 
 test('create g with a class', function(t) {
@@ -21,8 +24,6 @@ test('create g with a class', function(t) {
 
     t.equal(testElement.className.animVal, 'thing');
     t.equal(testElement.className.baseVal, 'thing');
-
-    t.end();
 });
 
 test('create g with a child', function(t) {
@@ -41,36 +42,26 @@ test('create g with a child', function(t) {
         testElement.childNodes[0].tagName,
         'path'
     );
-
-    t.end();
 });
 
 test('create circle with attributes', function(t) {
-    t.plan(4);
+    t.plan(3);
 
     var testElement = crelns('http://www.w3.org/2000/svg', 'circle', {'class':'mycircle',cx:50,cy:50,r:25});
 
     t.equal(testElement.className.animVal, 'mycircle');
     t.equal(testElement.className.baseVal, 'mycircle');
-
-    t.equal(testElement.cx.baseVal.value, 50);
-    t.equal(testElement.cx.baseVal.valueInSpecifiedUnits, 50);
-
-    t.end();
+    t.equal(testElement.getAttribute('cx'), '50');
 });
 
 test('modify existing circle attributes', function(t) {
-    t.plan(4);
+    t.plan(2);
 
     var testElement = crelns('http://www.w3.org/2000/svg', 'circle', {'class':'mycircle',cx:50,cy:50,r:25});
 
-    t.equal(testElement.r.baseVal.value, 25);
-    t.equal(testElement.r.baseVal.valueInSpecifiedUnits, 25);
+    t.equal(testElement.getAttribute('r'), '25');
 
     testElement = crelns('http://www.w3.org/2000/svg', testElement, {r:45});
 
-    t.equal(testElement.r.baseVal.value, 45);
-    t.equal(testElement.r.baseVal.valueInSpecifiedUnits, 45);
-
-    t.end();
+    t.equal(testElement.getAttribute('r'), '45');
 });
