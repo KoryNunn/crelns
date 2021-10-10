@@ -15,14 +15,12 @@ test('create g', function(t) {
 });
 
 test('create g with a class', function(t) {
-    t.plan(1);
+    t.plan(2);
 
     var testElement = crelns('http://www.w3.org/2000/svg', 'g', {'class':'thing'});
 
-    t.deepEqual(
-        testElement.className,
-        {animVal:'thing',baseVal:'thing'}
-    );
+    t.equal(testElement.className.animVal, 'thing');
+    t.equal(testElement.className.baseVal, 'thing');
 
     t.end();
 });
@@ -48,39 +46,31 @@ test('create g with a child', function(t) {
 });
 
 test('create circle with attributes', function(t) {
-    t.plan(2);
+    t.plan(4);
 
     var testElement = crelns('http://www.w3.org/2000/svg', 'circle', {'class':'mycircle',cx:50,cy:50,r:25});
 
-    t.deepEqual(
-        testElement.className,
-        {animVal:'mycircle',baseVal:'mycircle'}
-    );
+    t.equal(testElement.className.animVal, 'mycircle');
+    t.equal(testElement.className.baseVal, 'mycircle');
 
-    t.deepEqual(
-        testElement.cx.baseVal,
-        {value:50,valueInSpecifiedUnits:50}
-    );
+    t.equal(testElement.cx.baseVal.value, 50);
+    t.equal(testElement.cx.baseVal.valueInSpecifiedUnits, 50);
 
     t.end();
 });
 
 test('modify existing circle attributes', function(t) {
-    t.plan(2);
+    t.plan(4);
 
     var testElement = crelns('http://www.w3.org/2000/svg', 'circle', {'class':'mycircle',cx:50,cy:50,r:25});
 
-    t.deepEqual(
-        testElement.r.baseVal,
-        {value:25,valueInSpecifiedUnits:25}
-    );
+    t.equal(testElement.r.baseVal.value, 25);
+    t.equal(testElement.r.baseVal.valueInSpecifiedUnits, 25);
 
     testElement = crelns('http://www.w3.org/2000/svg', testElement, {r:45});
 
-    t.deepEqual(
-        testElement.r.baseVal,
-        {value:45,valueInSpecifiedUnits:45}
-    );
+    t.equal(testElement.r.baseVal.value, 45);
+    t.equal(testElement.r.baseVal.valueInSpecifiedUnits, 45);
 
     t.end();
 });
